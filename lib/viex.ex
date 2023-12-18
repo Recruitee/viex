@@ -63,8 +63,12 @@ defmodule Viex do
   defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 500}}),
     do: {:error, :internal_server_error}
 
-  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}),
-    do: {:ok, body}
+  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}) do
+    cond do
+      String.contains?(body, "MS_MAX_CONCURRENT_REQ") -> {:error, :too_many_requests}
+      true -> {:ok, body}
+    end
+  end
 
   defp headers() do
     [
