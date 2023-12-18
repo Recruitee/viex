@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\">\n        <soapenv:Header/>\n        <soapenv:Body>\n          <urn:checkVat>\n            <urn:countryCode>NL</urn:countryCode>\n            <urn:vatNumber>9999999</urn:vatNumber>\n          </urn:checkVat>\n        </soapenv:Body>\n      </soapenv:Envelope>",
+      "headers": {
+        "SOAPAction": "",
+        "Content-Type": "text/xml;charset=UTF-8"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
+    },
+    "response": {
+      "binary": false,
+      "body": "<env:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Header/><env:Body><env:Fault><faultcode>env:Server</faultcode><faultstring>MS_MAX_CONCURRENT_REQ</faultstring></env:Fault></env:Body></env:Envelope>", 
+      "headers": {
+        "Date": "Fri, 11 Aug 2023 11:23:11 GMT",
+        "Content-Length": "221",
+        "Content-Type": "text/xml; charset=UTF-8",
+        "SOAPAction": "\"\"",
+        "Accept": "text/xml",
+        "Server": "Europa",
+        "Proxy-Connection": "Keep-Alive",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

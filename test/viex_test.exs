@@ -56,6 +56,14 @@ defmodule ViexTest do
     end
   end
 
+  test "lookup with requests limit reached" do
+    use_cassette "lookup_requests_limit_reached" do
+      response = Viex.lookup("NL9999999")
+
+      assert response == {:error, :too_many_requests}
+    end
+  end
+
   test "valid?" do
     use_cassette "valid" do
       assert Viex.valid?("NL854265259B01") == true
