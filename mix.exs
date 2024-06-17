@@ -35,8 +35,8 @@ defmodule Viex.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 1.0"},
-      {:floki, "~> 0.13"},
+      {:httpoison, "~> 2.0"},
+      {:floki, "~> 0.30"},
       {:exvcr, "~> 0.8", only: :test},
       {:excoveralls, "~> 0.5", only: :test},
       {:ex_doc, "~> 0.14", only: :dev},
