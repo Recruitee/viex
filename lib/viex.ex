@@ -41,19 +41,21 @@ defmodule Viex do
   defp is_valid?({:error, _reason}), do: false
 
   defp request({country, vat}, nil) do
-    HTTPoison.post(@url, body(country, vat), headers(), options())
+    http_client().post(@url, body(country, vat), headers(), options())
   end
 
   defp request({country, vat}, requester_vat) do
     {requester_country, requester_vat} = String.split_at(requester_vat, 2)
 
-    HTTPoison.post(
+    http_client().post(
       @url,
       body(country, vat, requester_country, requester_vat),
       headers(),
       options()
     )
   end
+
+  defp http_client(), do: Application.get_env(:viex, :http_client, HTTPoison)
 
   defp handle_soap_response({:error, %HTTPoison.Error{reason: reason}}), do: {:error, reason}
 
